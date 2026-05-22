@@ -45,7 +45,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
         >
           <Sparkles className="w-4 h-4 text-blue-600" />
-          <span className="text-sm font-medium text-slate-700">ISO 9001:2015 Certified</span>
+          <span className="text-sm font-medium text-slate-700">Certified Quality</span>
         </motion.div>
 
         <motion.h1
@@ -55,7 +55,7 @@ export default function Hero() {
           className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          SARS Interiors
+          Interior Studio
         </motion.h1>
 
         <motion.p
@@ -64,7 +64,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-xl md:text-2xl text-slate-600 mb-4 max-w-3xl mx-auto"
         >
-          Premium Plywood & Modular Kitchen Accessories
+          Premium Interior Design & Modular Solutions
         </motion.p>
 
         <motion.p
@@ -73,7 +73,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-lg text-slate-500 mb-12 max-w-2xl mx-auto"
         >
-          A unit of SARS International - Your solution for interior design and modular kitchens in Tezpur
+          Crafting beautiful spaces with quality materials and expert design
         </motion.p>
 
         <motion.div

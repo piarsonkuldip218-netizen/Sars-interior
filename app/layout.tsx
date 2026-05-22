@@ -13,9 +13,9 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "SARS Interiors - Premium Plywood & Interior Solutions",
-  description: "SARS Interiors, Tezpur - Leading provider of premium plywood, modular kitchen accessories, glass, wallpapers, and aluminum doors & windows. ISO 9001:2015 certified.",
-  keywords: "plywood, interior design, modular kitchen, Tezpur, Assam, glass, wallpapers, aluminum doors, windows",
+  title: "Interior Studio - Premium Interior Design Solutions",
+  description: "Premium interior design and modular kitchen solutions. Crafting beautiful spaces with quality materials and expert design.",
+  keywords: "interior design, modular kitchen, plywood, home interiors, premium furniture",
 };
 
 export default function RootLayout({

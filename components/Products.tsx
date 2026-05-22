@@ -135,7 +135,7 @@ export default function Products() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.a
-              href="https://wa.me/916000090678"
+              href="https://wa.me/910000000000"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -145,7 +145,7 @@ export default function Products() {
               WhatsApp Us
             </motion.a>
             <motion.a
-              href="tel:06000090678"
+              href="tel:0000000000"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all duration-300"

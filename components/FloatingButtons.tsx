@@ -4,8 +4,8 @@ import { Phone, MessageCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function FloatingButtons() {
-  const phoneNumber = '06000090678';
-  const whatsappNumber = '916000090678'; // WhatsApp format without +
+  const phoneNumber = '0000000000';
+  const whatsappNumber = '910000000000'; // WhatsApp format without +
 
   return (
     <div className="fixed bottom-8 right-8 flex flex-col gap-4 z-50">

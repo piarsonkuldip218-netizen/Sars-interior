@@ -7,7 +7,7 @@ const features = [
   {
     icon: Award,
     title: 'ISO Certified',
-    description: 'ISO 9001:2015 certified ensuring highest quality standards',
+    description: 'Certified quality standards ensuring premium materials',
     color: 'text-blue-600',
     bgColor: 'bg-blue-50',
   },
@@ -21,7 +21,7 @@ const features = [
   {
     icon: Shield,
     title: 'Trusted Brand',
-    description: 'A unit of SARS International with proven track record',
+    description: 'Established brand with proven track record of quality',
     color: 'text-pink-600',
     bgColor: 'bg-pink-50',
   },
@@ -53,11 +53,11 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            About SARS Interiors
+            About Us
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            A unit of SARS International, we are Tezpur&apos;s premier plywood supplier and interior design specialist,
-            committed to making your dream home a reality with ISO 9001:2015 certified quality.
+            We are a premier interior design specialist committed to making your dream space a reality
+            with quality craftsmanship and certified materials.
           </p>
         </motion.div>
 

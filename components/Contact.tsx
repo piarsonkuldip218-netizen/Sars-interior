@@ -45,12 +45,12 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl font-bold text-slate-800 mb-2">Location</h3>
                   <p className="text-slate-600">
-                    NT Rd, near TIMES Hospital<br />
-                    Ketekibari, Tezpur<br />
-                    Assam 784154
+                    [Your Street Address]<br />
+                    [Area, City]<br />
+                    [State, PIN Code]
                   </p>
                   <motion.a
-                    href="https://maps.google.com/?q=NT+Rd+near+TIMES+Hospital+Ketekibari+Tezpur+Assam+784154"
+                    href="#"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
@@ -76,10 +76,10 @@ export default function Contact() {
                 <div>
                   <h3 className="text-xl font-bold text-slate-800 mb-2">Phone</h3>
                   <a 
-                    href="tel:06000090678" 
+                    href="tel:+910000000000" 
                     className="text-slate-600 hover:text-blue-600 transition-colors text-lg"
                   >
-                    060000 90678
+                    +91 00000 00000
                   </a>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function Contact() {
               <h3 className="text-xl font-bold text-slate-800 mb-4">Follow Us</h3>
               <div className="flex gap-4">
                 <motion.a
-                  href="https://www.instagram.com/sarsinteriors"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
@@ -126,7 +126,7 @@ export default function Contact() {
                   <Instagram className="w-6 h-6" />
                 </motion.a>
                 <motion.a
-                  href="https://www.facebook.com/SARS.interiors"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1 }}
@@ -137,8 +137,7 @@ export default function Contact() {
                 </motion.a>
               </div>
               <div className="mt-4 text-sm text-slate-600">
-                <p>Instagram: @sarsinteriors (140+ followers)</p>
-                <p>Facebook: SARS Interiors | Tezpur (1.2K+ followers)</p>
+                <p>Connect with us on social media</p>
               </div>
             </motion.div>
           </div>
@@ -176,12 +175,12 @@ export default function Contact() {
             Visit our website for more information
           </p>
           <a
-            href="https://sarsindia.com"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-700 font-semibold text-lg"
           >
-            www.sarsindia.com
+            www.yourwebsite.com
           </a>
         </motion.div>
       </div>
