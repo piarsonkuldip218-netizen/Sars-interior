@@ -5,686 +5,522 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SARS Interiors - Premium Plywood & Interior Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             background: linear-gradient(to bottom, #ffffff, #f1f5f9);
         }
-        
-        /* Glassmorphism */
         .glass {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        
-        /* Animations */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
         @keyframes blob {
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(30px, -50px) scale(1.1); }
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
-        
-        .animate-blob {
-            animation: blob 7s infinite;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .animation-delay-2000 {
-            animation-delay: 2s;
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
-        
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-        
-        /* Gradient Text */
+        .animate-blob { animation: blob 7s infinite; }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+        .float-animation { animation: float 3s ease-in-out infinite; }
         .gradient-text {
             background: linear-gradient(to right, #2563eb, #9333ea, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        /* 3D Canvas Placeholder */
-        .canvas-3d {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%);
         }
-
-        
-        .canvas-3d::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.8) 0%, transparent 70%);
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: float 4s ease-in-out infinite;
+        .product-image {
+            transition: all 0.5s ease;
         }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
+        .product-card:hover .product-image {
+            transform: scale(1.1);
         }
-        
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #0ea5e9;
-            border-radius: 5px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #0284c7;
-        }
-        
-        /* Floating Buttons */
-        .floating-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 50;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #0ea5e9, #9333ea); border-radius: 4px; }
+        .playfair { font-family: 'Playfair Display', serif; }
     </style>
 </head>
 <body>
 
+<!-- Floating WhatsApp & Call Buttons -->
+<div class="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+    <a href="https://wa.me/916000090678" target="_blank" 
+       class="bg-green-500 hover:bg-green-600 rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110 float-animation"
+       style="box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+    <a href="tel:06000090678" 
+       class="bg-blue-600 hover:bg-blue-700 rounded-full p-4 shadow-2xl transition-all duration-300 hover:scale-110"
+       style="box-shadow: 0 10px 30px rgba(37, 99, 235, 0.5);">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+    </a>
+</div>
 
-    <!-- Floating WhatsApp & Call Buttons -->
-    <div class="floating-btn flex flex-col gap-4">
-        <a href="https://wa.me/916000090678" target="_blank" 
-           class="glass rounded-full p-4 shadow-2xl hover:shadow-green-500/50 transition-all duration-300 group">
-            <svg class="w-7 h-7 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-        </a>
-        <a href="tel:06000090678" 
-           class="glass rounded-full p-4 shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group">
-            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-        </a>
+<!-- Navigation -->
+<nav class="fixed top-0 left-0 right-0 z-40 glass">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold gradient-text playfair">SARS Interiors</div>
+        <div class="hidden md:flex gap-8 text-slate-700 font-medium">
+            <a href="#home" class="hover:text-blue-600 transition">Home</a>
+            <a href="#about" class="hover:text-blue-600 transition">About</a>
+            <a href="#products" class="hover:text-blue-600 transition">Products</a>
+            <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+        </div>
     </div>
+</nav>
 
+<!-- Hero Section with Real Image -->
+<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden hero-bg pt-20">
+    <!-- Hero Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80" 
+             alt="Modern Interior" 
+             class="w-full h-full object-cover opacity-20">
+        <div class="absolute inset-0 bg-gradient-to-br from-white/80 via-blue-50/80 to-purple-50/80"></div>
+    </div>
+    
+    <!-- Animated Blobs -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+    <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    <div class="absolute bottom-20 left-1/2 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
-        <!-- 3D Background Placeholder -->
-        <div class="canvas-3d absolute inset-0 opacity-30"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8">
+            <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span class="text-sm font-semibold text-slate-700">ISO 9001:2015 Certified</span>
+        </div>
         
-        <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8">
-                <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                </svg>
-                <span class="text-sm font-medium text-slate-700">ISO 9001:2015 Certified</span>
+        <h1 class="text-5xl md:text-8xl font-bold mb-6 gradient-text playfair">
+            SARS Interiors
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-slate-700 mb-4 max-w-3xl mx-auto font-medium">
+            Premium Plywood & Modular Kitchen Accessories
+        </p>
+        
+        <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">
+            A unit of SARS International - Tezpur's Premier Interior Design Solution
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
+            <a href="#products" 
+               class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                Explore Products
+            </a>
+            <a href="#contact" 
+               class="px-8 py-4 glass rounded-full font-semibold text-slate-700 hover:scale-105 transition-all duration-300">
+                Visit Showroom
+            </a>
+        </div>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="text-3xl md:text-4xl font-bold gradient-text playfair">100%</div>
+                <div class="text-sm text-slate-600 mt-1">Quality Assured</div>
             </div>
-            
-            <h1 class="text-6xl md:text-8xl font-bold mb-6 gradient-text" style="font-family: Georgia, serif;">
-                SARS Interiors
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-slate-600 mb-4 max-w-3xl mx-auto">
-                Premium Plywood & Modular Kitchen Accessories
+            <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="text-3xl md:text-4xl font-bold gradient-text playfair">4.0★</div>
+                <div class="text-sm text-slate-600 mt-1">Customer Rating</div>
+            </div>
+            <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="text-3xl md:text-4xl font-bold gradient-text playfair">10+</div>
+                <div class="text-sm text-slate-600 mt-1">Years Experience</div>
+            </div>
+            <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div class="text-3xl md:text-4xl font-bold gradient-text playfair">1000+</div>
+                <div class="text-sm text-slate-600 mt-1">Happy Clients</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section with Image -->
+<section id="about" class="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">About SARS Interiors</h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                Tezpur's premier plywood supplier and interior design specialist, transforming homes with ISO certified quality.
             </p>
-            
-            <p class="text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
-                A unit of SARS International - Your solution for interior design and modular kitchens in Tezpur
+        </div>
+
+        <!-- About with Showroom Image -->
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" 
+                     alt="SARS Interiors Showroom" 
+                     class="w-full h-[400px] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 glass rounded-2xl p-4">
+                    <div class="text-white font-bold">Our Showroom</div>
+                    <div class="text-sm text-white/90">Tezpur, Assam</div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h3 class="text-3xl font-bold text-slate-800 playfair">Crafting Dream Spaces Since Years</h3>
+                <p class="text-slate-600 text-lg">
+                    At SARS Interiors, we help make your dream home a reality. As a unit of SARS International, 
+                    we bring you the finest plywood, modular kitchens, and interior solutions in Tezpur.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
+                        <span class="text-slate-700">Premium Quality Materials</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
+                        <span class="text-slate-700">Expert Sales Staff</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div>
+                        <span class="text-slate-700">Best Prices Guaranteed</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div class="glass rounded-3xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center">
+                <div class="text-4xl mb-3">🏆</div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">ISO Certified</h3>
+                <p class="text-sm text-slate-600">9001:2015 Certified Quality</p>
+            </div>
+            <div class="glass rounded-3xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center">
+                <div class="text-4xl mb-3">⭐</div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Premium Quality</h3>
+                <p class="text-sm text-slate-600">Best products at minimum budget</p>
+            </div>
+            <div class="glass rounded-3xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center">
+                <div class="text-4xl mb-3">🛡️</div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Trusted Brand</h3>
+                <p class="text-sm text-slate-600">Proven track record</p>
+            </div>
+            <div class="glass rounded-3xl p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center">
+                <div class="text-4xl mb-3">👥</div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Expert Team</h3>
+                <p class="text-sm text-slate-600">Friendly & helpful staff</p>
+            </div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="glass rounded-3xl p-8 md:p-12">
+            <h3 class="text-3xl font-bold text-center mb-8 text-slate-800 playfair">What Our Customers Say</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
+                    <div class="text-yellow-500 mb-3 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-4">"Best quality products with minimum budget and best service"</p>
+                    <p class="text-sm font-bold text-slate-800">— Verified Customer</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
+                    <div class="text-yellow-500 mb-3 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-4">"You will find best quality brands at most reasonable prices"</p>
+                    <p class="text-sm font-bold text-slate-800">— Happy Client</p>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
+                    <div class="text-yellow-500 mb-3 text-xl">★★★★★</div>
+                    <p class="text-slate-600 italic mb-4">"Very good sales staff and store environment is very good"</p>
+                    <p class="text-sm font-bold text-slate-800">— Satisfied Customer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Products Section with Real Images -->
+<section id="products" class="py-24 bg-gradient-to-b from-slate-50 to-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">Our Products</h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                Premium plywood, modular kitchens, glass, wallpapers, mica, veneers & aluminum doors/windows
             </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-                <a href="#products" 
-                   class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
-                    Explore Products
-                </a>
-                <a href="#contact" 
-                   class="px-8 py-4 glass rounded-full font-semibold text-slate-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                    Contact Us
-                </a>
-            </div>
-
-            
-            <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">100%</div>
-                    <div class="text-sm text-slate-600">Quality Products</div>
-                </div>
-                <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">4.0</div>
-                    <div class="text-sm text-slate-600">Customer Rating</div>
-                </div>
-                <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">10+ Years</div>
-                    <div class="text-sm text-slate-600">Experience</div>
-                </div>
-                <div class="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
-                    <div class="text-3xl font-bold text-blue-600 mb-2">1000+</div>
-                    <div class="text-sm text-slate-600">Happy Clients</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
-        <!-- Background Decoration -->
-        <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-            <div class="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
         </div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-                    About SARS Interiors
-                </h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                    A unit of SARS International, we are Tezpur's premier plywood supplier and interior design specialist,
-                    committed to making your dream home a reality with ISO 9001:2015 certified quality.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                <!-- Feature Cards -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="bg-blue-50 text-blue-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">ISO Certified</h3>
-                    <p class="text-slate-600">ISO 9001:2015 certified ensuring highest quality standards</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Plywood -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=600&q=80" 
+                         alt="Premium Plywood" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Premium Plywood</div>
                 </div>
-
-                
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="bg-purple-50 text-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
-                        </svg>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">High-quality plywood from top brands for all your interior needs</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Waterproof</span>
+                        <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Termite Resistant</span>
+                        <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">BWP Grade</span>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">Premium Quality</h3>
-                    <p class="text-slate-600">Best quality products with minimum budget and best service</p>
-                </div>
-                
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="bg-pink-50 text-pink-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">Trusted Brand</h3>
-                    <p class="text-slate-600">A unit of SARS International with proven track record</p>
-                </div>
-                
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                    <div class="bg-indigo-50 text-indigo-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-3">Expert Team</h3>
-                    <p class="text-slate-600">Very good sales staff and store environment</p>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Premium Plywood" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
                 </div>
             </div>
-
             
-            <!-- Customer Reviews -->
-            <div class="glass rounded-3xl p-8 md:p-12">
-                <h3 class="text-3xl font-bold text-center mb-8 text-slate-800">What Our Customers Say</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
-                        <div class="flex text-yellow-500 mb-4">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        </div>
-                        <p class="text-slate-600 mb-4 italic">"Best quality products with minimum budget and best service"</p>
-                        <p class="text-sm font-semibold text-slate-800">- Verified Customer</p>
+            <!-- Modular Kitchen -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" 
+                         alt="Modular Kitchen" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-purple-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Modular Kitchens</div>
+                </div>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">Custom designed modular kitchens with premium accessories</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Modern Design</span>
+                        <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Space Efficient</span>
+                        <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Premium</span>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
-                        <div class="flex text-yellow-500 mb-4">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        </div>
-                        <p class="text-slate-600 mb-4 italic">"You will find best quality brands at most reasonable prices"</p>
-                        <p class="text-sm font-semibold text-slate-800">- Happy Client</p>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Modular Kitchens" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Glass Solutions -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" 
+                         alt="Glass Solutions" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-indigo-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Glass Solutions</div>
+                </div>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">Imported designer glass for partitions, doors and decoration</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Toughened</span>
+                        <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Designer</span>
+                        <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Custom Sizes</span>
                     </div>
-                    <div class="bg-white rounded-2xl p-6 shadow-lg hover:scale-105 transition-transform">
-                        <div class="flex text-yellow-500 mb-4">
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                        </div>
-                        <p class="text-slate-600 mb-4 italic">"Very good sales staff and store environment is very good"</p>
-                        <p class="text-sm font-semibold text-slate-800">- Satisfied Customer</p>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Glass Solutions" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Wallpapers -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&q=80" 
+                         alt="Wallpapers" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-pink-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Designer Wallpapers</div>
+                </div>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">Imported wallpapers with exclusive designs for any space</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Premium</span>
+                        <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Easy Maintain</span>
+                        <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Diverse</span>
                     </div>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Wallpapers" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mica & Veneers -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" 
+                         alt="Mica and Veneers" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-amber-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Mica & Veneers</div>
+                </div>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">Top-grade mica and veneers for elegant furniture finishing</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Scratch Free</span>
+                        <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Heat Resistant</span>
+                        <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Rich Texture</span>
+                    </div>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Mica and Veneers" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Aluminum Doors -->
+            <div class="product-card glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+                <div class="relative h-56 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1558959356-2d3df0e9b65a?w=600&q=80" 
+                         alt="Aluminum Doors" 
+                         class="product-image w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-teal-900/60 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white text-2xl font-bold playfair">Aluminum Doors</div>
+                </div>
+                <div class="p-6">
+                    <p class="text-slate-600 mb-4">Modern aluminum doors and windows with superior durability</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Weatherproof</span>
+                        <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Low Maintain</span>
+                        <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Sleek</span>
+                    </div>
+                    <a href="https://wa.me/916000090678?text=I'm interested in Aluminum Doors and Windows" target="_blank" 
+                       class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold hover:shadow-xl transition-all">
+                        Inquire Now
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-
-    <!-- Products Section -->
-    <section id="products" class="py-24 bg-gradient-to-b from-slate-50 to-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-                    Our Products & Services
-                </h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                    Shop for premium plywood, glass, imported wallpapers, mica, veneers, aluminum doors & windows, and complete modular kitchen solutions
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Premium Plywood</h3>
-                    <p class="text-slate-600 mb-6">High-quality plywood from top brands for all your interior needs</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-                            <span class="text-sm text-slate-700">Waterproof</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-                            <span class="text-sm text-slate-700">Termite Resistant</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500"></div>
-                            <span class="text-sm text-slate-700">BWP/BWR Grade</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
-
-                
-                <!-- Product Card 2 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Modular Kitchens</h3>
-                    <p class="text-slate-600 mb-6">Custom designed modular kitchen accessories and complete solutions</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                            <span class="text-sm text-slate-700">Modern Designs</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                            <span class="text-sm text-slate-700">Space Efficient</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"></div>
-                            <span class="text-sm text-slate-700">Premium Hardware</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
-                
-                <!-- Product Card 3 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Glass Solutions</h3>
-                    <p class="text-slate-600 mb-6">Imported and designer glass for partitions, doors, and decorative purposes</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500"></div>
-                            <span class="text-sm text-slate-700">Toughened Glass</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500"></div>
-                            <span class="text-sm text-slate-700">Designer Patterns</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500"></div>
-                            <span class="text-sm text-slate-700">Custom Sizes</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
-
-                
-                <!-- Product Card 4 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Wallpapers</h3>
-                    <p class="text-slate-600 mb-6">Imported wallpapers with exclusive designs to transform your spaces</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-rose-500"></div>
-                            <span class="text-sm text-slate-700">Premium Quality</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-rose-500"></div>
-                            <span class="text-sm text-slate-700">Easy Maintenance</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-rose-500"></div>
-                            <span class="text-sm text-slate-700">Diverse Patterns</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
-                
-                <!-- Product Card 5 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Mica & Veneers</h3>
-                    <p class="text-slate-600 mb-6">Top-grade mica and veneers for elegant furniture finishing</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                            <span class="text-sm text-slate-700">Scratch Resistant</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                            <span class="text-sm text-slate-700">Heat Resistant</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500"></div>
-                            <span class="text-sm text-slate-700">Rich Textures</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
-                
-                <!-- Product Card 6 -->
-                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"/>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">Aluminum Doors & Windows</h3>
-                    <p class="text-slate-600 mb-6">Modern aluminum doors and windows with superior durability</p>
-                    <div class="space-y-2 mb-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500"></div>
-                            <span class="text-sm text-slate-700">Weather Resistant</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500"></div>
-                            <span class="text-sm text-slate-700">Low Maintenance</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-2 h-2 rounded-full bg-gradient-to-r from-teal-500 to-emerald-500"></div>
-                            <span class="text-sm text-slate-700">Sleek Design</span>
-                        </div>
-                    </div>
-                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold shadow-lg hover:shadow-xl transition-all">
-                        Learn More
-                    </button>
-                </div>
+        <!-- CTA -->
+        <div class="mt-16 glass rounded-3xl p-8 md:p-12 text-center">
+            <h3 class="text-3xl font-bold text-slate-800 mb-4 playfair">Need Expert Advice?</h3>
+            <p class="text-xl text-slate-600 mb-6">DM us for inquiries and custom quotes</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/916000090678" target="_blank"
+                   class="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+                    💬 WhatsApp Us
+                </a>
+                <a href="tel:06000090678"
+                   class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">
+                    📞 Call: 060000 90678
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-gradient-to-b from-white to-slate-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
-                    Visit Our Showroom
-                </h2>
-                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
-                    Come experience our premium collection and get expert guidance for your interior projects
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <!-- Contact Information -->
-                <div class="space-y-6">
-                    <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-2">Location</h3>
-                                <p class="text-slate-600">
-                                    NT Rd, near TIMES Hospital<br>
-                                    Ketekibari, Tezpur<br>
-                                    Assam 784154
-                                </p>
-                                <a href="https://maps.google.com/?q=NT+Rd+near+TIMES+Hospital+Ketekibari+Tezpur+Assam+784154" 
-                                   target="_blank" 
-                                   class="inline-block mt-4 text-blue-600 hover:text-blue-700 font-semibold">
-                                    Get Directions →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-2">Phone</h3>
-                                <a href="tel:06000090678" class="text-slate-600 hover:text-blue-600 transition-colors text-lg">
-                                    060000 90678
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center flex-shrink-0">
-                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-slate-800 mb-2">Business Hours</h3>
-                                <p class="text-slate-600">
-                                    Open • Closes 8 PM<br>
-                                    Hours: 9 AM - 8 PM
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
-                        <h3 class="text-xl font-bold text-slate-800 mb-4">Follow Us</h3>
-                        <div class="flex gap-4 mb-4">
-                            <a href="https://www.instagram.com/sarsinteriors" target="_blank" 
-                               class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center text-white hover:shadow-lg transition-all hover:scale-110">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </a>
-                            <a href="https://www.facebook.com/SARS.interiors" target="_blank" 
-                               class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white hover:shadow-lg transition-all hover:scale-110">
-                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="text-sm text-slate-600">
-                            <p>Instagram: @sarsinteriors (140+ followers)</p>
-                            <p>Facebook: SARS Interiors | Tezpur (1.2K+ followers)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Map -->
-                <div class="glass rounded-3xl p-4 h-full min-h-[600px] hover:shadow-2xl transition-all">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3567.8!2d92.8!3d26.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDM3JzQ4LjAiTiA5MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890123"
-                        width="100%"
-                        height="100%"
-                        style="border:0; border-radius:1.5rem;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Footer -->
-    <footer class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-12 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl"></div>
+<!-- Contact Section -->
+<section id="contact" class="py-24 bg-gradient-to-b from-white to-slate-50">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">Visit Our Showroom</h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                Experience our premium collection in person
+            </p>
         </div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 gradient-text" style="background: linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                        SARS Interiors
-                    </h3>
-                    <p class="text-slate-300 mb-4">
-                        A unit of SARS International - Your trusted partner for premium plywood and interior solutions in Tezpur.
-                    </p>
-                    <div class="flex items-center gap-2 text-sm text-slate-400">
-                        <span class="px-3 py-1 bg-slate-700 rounded-full">ISO 9001:2015 Certified</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="space-y-6">
+                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 text-2xl">📍</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Location</h3>
+                            <p class="text-slate-600">NT Rd, near TIMES Hospital<br>Ketekibari, Tezpur<br>Assam 784154</p>
+                            <a href="https://maps.google.com/?q=NT+Rd+Ketekibari+Tezpur+Assam" target="_blank"
+                               class="inline-block mt-3 text-blue-600 hover:text-blue-700 font-semibold">
+                                Get Directions →
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#about" class="text-slate-300 hover:text-blue-400 transition-colors">About Us</a></li>
-                        <li><a href="#products" class="text-slate-300 hover:text-blue-400 transition-colors">Products & Services</a></li>
-                        <li><a href="#contact" class="text-slate-300 hover:text-blue-400 transition-colors">Contact Us</a></li>
-                        <li><a href="https://sarsindia.com" target="_blank" class="text-slate-300 hover:text-blue-400 transition-colors">SARS India</a></li>
-                    </ul>
+                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0 text-2xl">📞</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Call Us</h3>
+                            <a href="tel:06000090678" class="text-slate-600 hover:text-blue-600 text-lg font-semibold">060000 90678</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-slate-300">
-                        <li>NT Rd, near TIMES Hospital</li>
-                        <li>Ketekibari, Tezpur</li>
-                        <li>Assam 784154</li>
-                        <li class="pt-2">
-                            <a href="tel:06000090678" class="hover:text-blue-400 transition-colors">
-                                Phone: 060000 90678
-                            </a>
-                        </li>
-                    </ul>
+                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-500 flex items-center justify-center flex-shrink-0 text-2xl">🕐</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-2">Business Hours</h3>
+                            <p class="text-slate-600">Mon - Sun<br>9 AM - 8 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass rounded-3xl p-8 hover:shadow-2xl transition-all">
+                    <h3 class="text-xl font-bold text-slate-800 mb-4">Follow Us</h3>
+                    <div class="flex gap-3">
+                        <a href="https://www.instagram.com/sarsinteriors" target="_blank"
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center text-white hover:scale-110 transition-all text-xl">📷</a>
+                        <a href="https://www.facebook.com/SARS.interiors" target="_blank"
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center text-white hover:scale-110 transition-all text-xl">f</a>
+                        <a href="https://wa.me/916000090678" target="_blank"
+                           class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center text-white hover:scale-110 transition-all text-xl">💬</a>
+                    </div>
                 </div>
             </div>
             
-            <!-- Bottom Bar -->
-            <div class="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-slate-400 text-sm flex items-center gap-2">
-                    © 2026 SARS Interiors. Made with 
-                    <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
-                    </svg>
-                    in Tezpur
-                </p>
-                <div class="flex gap-4 text-sm text-slate-400">
-                    <a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
-                    <span>•</span>
-                    <a href="#" class="hover:text-blue-400 transition-colors">Terms of Service</a>
-                </div>
+            <div class="glass rounded-3xl p-4 min-h-[600px] hover:shadow-2xl transition-all">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3567.8!2d92.8!3d26.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDM3JzQ4LjAiTiA5MsKwNDgnMDAuMCJF!5e0!3m2!1sen!2sin"
+                    width="100%" height="100%" style="border:0; border-radius:1.5rem; min-height: 580px;"
+                    allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gradient-to-br from-slate-900 to-slate-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 playfair" style="background: linear-gradient(to right, #60a5fa, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SARS Interiors</h3>
+                <p class="text-slate-300 mb-3">A unit of SARS International - Premium Plywood & Interior Solutions</p>
+                <span class="inline-block px-3 py-1 bg-slate-700 rounded-full text-xs">ISO 9001:2015 Certified</span>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li><a href="#about" class="hover:text-blue-400">About</a></li>
+                    <li><a href="#products" class="hover:text-blue-400">Products</a></li>
+                    <li><a href="#contact" class="hover:text-blue-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-3">Contact</h4>
+                <ul class="space-y-2 text-slate-300">
+                    <li>NT Rd, Ketekibari, Tezpur</li>
+                    <li>Assam 784154</li>
+                    <li><a href="tel:06000090678" class="hover:text-blue-400">📞 060000 90678</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-slate-700 pt-6 text-center text-slate-400 text-sm">
+            © 2026 SARS Interiors. Made with ❤️ in Tezpur
+        </div>
+    </div>
+</footer>
+
 </body>
 </html>
