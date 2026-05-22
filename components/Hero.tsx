@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
+import { Sparkles, Star, Phone, Calendar, ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 
@@ -11,130 +11,181 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end start"]
+    offset: ['start start', 'end start'],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
 
   return (
-    <section 
+    <section
       ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background */}
+      {/* Dark cinematic background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-cyan-950/30 to-slate-900" />
+
+      {/* Animated gradient blobs */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute inset-0 opacity-30"
-          style={{ scale }}
-        >
-          <Scene3D />
-        </motion.div>
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-cyan-500/20 rounded-full mix-blend-screen filter blur-3xl animate-blob" />
+        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-amber-500/15 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-2000" />
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-teal-500/20 rounded-full mix-blend-screen filter blur-3xl animate-blob animation-delay-4000" />
       </div>
 
-      {/* Content */}
-      <motion.div 
-        className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center"
-        style={{ opacity, y }}
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+        }}
+      />
+
+      {/* 3D Scene */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        style={{ scale: sceneScale, opacity: useTransform(scrollYProgress, [0, 0.6], [1, 0.3]) }}
       >
+        <Scene3D />
+      </motion.div>
+
+      {/* Vignette */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-slate-950 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-vignette pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(2,6,23,0.6) 100%)' }} />
+
+      {/* Content */}
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto px-6 py-20 text-center"
+        style={{ opacity, y, scale }}
+      >
+        {/* Top badge */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full glass-cyan mb-8 border border-cyan-400/30"
         >
-          <Sparkles className="w-4 h-4 text-blue-600" />
-          <span className="text-sm font-medium text-slate-700">Certified Quality</span>
+          <div className="flex">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-current" />
+            ))}
+          </div>
+          <span className="text-sm font-medium text-cyan-100">4.8 Rating · 68+ Reviews</span>
         </motion.div>
 
+        {/* Main heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-6xl md:text-8xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600"
+          transition={{ duration: 1, delay: 0.2 }}
+          className="text-7xl md:text-9xl font-bold mb-4 leading-none tracking-tight"
           style={{ fontFamily: 'var(--font-playfair)' }}
         >
-          Interior Studio
+          <span className="gradient-text-premium text-glow-cyan">TAMS</span>
+          <br />
+          <span className="text-white/90 font-light italic text-6xl md:text-8xl">Dental</span>
         </motion.h1>
 
+        {/* Doctor name */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-slate-600 mb-4 max-w-3xl mx-auto"
-        >
-          Premium Interior Design & Modular Solutions
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-lg text-slate-500 mb-12 max-w-2xl mx-auto"
+          className="text-xl md:text-2xl text-cyan-300/90 mb-3 tracking-wider uppercase font-light"
         >
-          Crafting beautiful spaces with quality materials and expert design
+          By Dr. T. Hussain · BDS
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-lg md:text-xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          Premium dental care crafted with precision, delivered with warmth.
+          <br className="hidden md:block" />
+          Where every smile is a masterpiece.
+        </motion.p>
+
+        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
         >
           <a
-            href="#products"
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            href="#contact"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-teal-500 text-slate-950 rounded-full font-semibold shadow-2xl shadow-cyan-500/40 hover:shadow-cyan-400/60 transition-all duration-300 lift-on-hover overflow-hidden"
           >
-            Explore Products
+            <span className="absolute inset-0 shimmer" />
+            <Calendar className="w-5 h-5 relative z-10" />
+            <span className="relative z-10">Book Appointment</span>
+            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
           </a>
           <a
-            href="#contact"
-            className="px-8 py-4 glass rounded-full font-semibold text-slate-700 hover:shadow-xl hover:scale-105 transition-all duration-300"
+            href="tel:09678470718"
+            className="group inline-flex items-center gap-3 px-8 py-4 glass rounded-full font-semibold text-white hover:bg-white/10 transition-all duration-300 lift-on-hover border border-white/20"
           >
-            Contact Us
+            <Phone className="w-5 h-5 text-cyan-300 group-hover:rotate-12 transition-transform" />
+            <span>Call: 096784 70718</span>
           </a>
         </motion.div>
 
-        {/* Floating Stats */}
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
+          transition={{ duration: 0.8, delay: 0.9 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
         >
           {[
-            { label: 'Quality Products', value: '100%' },
-            { label: 'Customer Rating', value: '4.0' },
-            { label: 'Experience', value: '10+ Years' },
-            { label: 'Happy Clients', value: '1000+' },
+            { label: 'Happy Patients', value: '2000+' },
+            { label: 'Google Rating', value: '4.8★' },
+            { label: 'Years Experience', value: '10+' },
+            { label: 'Procedures', value: '50+' },
           ].map((stat, index) => (
             <motion.div
               key={index}
-              className="glass rounded-2xl p-6 hover:shadow-xl transition-all duration-300"
-              whileHover={{ y: -5 }}
+              className="glass rounded-2xl p-5 hover:glass-cyan transition-all duration-300 group cursor-default"
+              whileHover={{ y: -6, scale: 1.03 }}
             >
-              <div className="text-3xl font-bold text-blue-600 mb-2">{stat.value}</div>
-              <div className="text-sm text-slate-600">{stat.label}</div>
+              <div className="text-3xl md:text-4xl font-bold gradient-text-cyan mb-1 group-hover:text-glow-cyan transition-all">
+                {stat.value}
+              </div>
+              <div className="text-xs md:text-sm text-slate-400 uppercase tracking-wider">
+                {stat.label}
+              </div>
             </motion.div>
           ))}
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-slate-400 rounded-full flex items-start justify-center p-2"
-        >
-          <motion.div className="w-1.5 h-1.5 bg-slate-400 rounded-full" />
-        </motion.div>
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-xs text-cyan-300/60 uppercase tracking-widest">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            className="w-6 h-10 border-2 border-cyan-400/40 rounded-full flex items-start justify-center p-1.5"
+          >
+            <motion.div
+              animate={{ height: ['30%', '60%', '30%'] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+              className="w-1 bg-gradient-to-b from-cyan-300 to-cyan-500 rounded-full"
+            />
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   );
