@@ -188,7 +188,8 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-
     <div class="hidden md:flex gap-8 text-slate-700 font-medium">
       <a href="#home" class="hover:text-blue-600">Home</a>
       <a href="#about" class="hover:text-blue-600">About</a>
-      <a href="#products" class="hover:text-blue-600">Products</a>
+      <a href="#showcase" class="hover:text-blue-600">3D Tour</a>
+      <a href="#products" class="hover:text-blue-600">Plywood</a>
       <a href="#contact" class="hover:text-blue-600">Contact</a>
     </div>
   </div>
@@ -216,11 +217,11 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-
     </div>
     
     <h1 class="text-5xl md:text-8xl font-bold mb-6 gradient-text playfair">SARS Interiors</h1>
-    <p class="text-xl md:text-2xl text-slate-700 mb-4 max-w-3xl mx-auto font-medium">Premium Plywood & Modular Kitchen Accessories</p>
-    <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">A unit of SARS International — Tezpur's Premier Interior Design Solution</p>
+    <p class="text-xl md:text-2xl text-slate-700 mb-4 max-w-3xl mx-auto font-medium">Premium Plywood Supplier in Tezpur</p>
+    <p class="text-lg text-slate-600 mb-12 max-w-2xl mx-auto">A unit of SARS International — Trusted source for high-quality plywood across Assam</p>
     
     <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-      <a href="#products" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">Explore Products</a>
+      <a href="#products" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all">View Plywood Range</a>
       <a href="#contact" class="px-8 py-4 glass rounded-full font-semibold text-slate-700 hover:scale-105 transition-all">Visit Showroom</a>
     </div>
     
@@ -250,7 +251,7 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">About SARS Interiors</h2>
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Tezpur's premier plywood supplier and interior design specialist.</p>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Tezpur's premier plywood supplier — quality you can trust.</p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
@@ -269,7 +270,7 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-
       </div>
       <div class="space-y-6">
         <h3 class="text-3xl font-bold text-slate-800 playfair">Crafting Dream Spaces</h3>
-        <p class="text-slate-600 text-lg">At SARS Interiors, we help make your dream home a reality. As a unit of SARS International, we bring you the finest plywood, modular kitchens, and interior solutions in Tezpur.</p>
+        <p class="text-slate-600 text-lg">At SARS Interiors, we are Tezpur's most trusted plywood supplier. As a unit of SARS International, we deliver premium grade plywood — from waterproof marine to commercial — backed by ISO 9001:2015 certification.</p>
         <ul class="space-y-3">
           <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div><span>Premium Quality Materials</span></li>
           <li class="flex items-center gap-3"><div class="w-2 h-2 rounded-full bg-gradient-to-r from-blue-600 to-purple-600"></div><span>Expert Sales Staff</span></li>
@@ -324,151 +325,201 @@ body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: linear-
   </div>
 </section>
 
+<!-- 3D Home Animation Video Section -->
+<section id="showcase" class="py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
+  <div class="absolute top-20 left-20 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+  <div class="absolute bottom-20 right-20 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+  
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4">
+        <span class="text-purple-600">🎬</span>
+        <span class="text-sm font-semibold text-slate-700">LIVE 3D EXPERIENCE</span>
+      </div>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4 gradient-text playfair">See Our Plywood In Action</h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Experience a 3D walkthrough of a beautifully crafted home — built with premium plywood</p>
+    </div>
+
+    <!-- Video Container with 3D effect -->
+    <div class="glass rounded-3xl p-3 md:p-4 shadow-2xl hover:shadow-blue-500/30 transition-all duration-500" style="perspective: 1000px;">
+      <div class="relative rounded-2xl overflow-hidden" style="padding-bottom: 56.25%; height: 0;">
+        <iframe
+          class="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/L_LUpnjgPso?autoplay=1&mute=1&loop=1&playlist=L_LUpnjgPso&controls=1&modestbranding=1&rel=0&showinfo=0"
+          title="3D Home Walkthrough Animation"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="border-radius: 1rem;">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Feature highlights below video -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12">
+      <div class="glass rounded-2xl p-5 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="text-4xl mb-2">🏡</div>
+        <div class="font-bold text-slate-800 text-sm">Interior Design</div>
+        <div class="text-xs text-slate-600 mt-1">Premium finishes</div>
+      </div>
+      <div class="glass rounded-2xl p-5 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="text-4xl mb-2">🪵</div>
+        <div class="font-bold text-slate-800 text-sm">Quality Plywood</div>
+        <div class="text-xs text-slate-600 mt-1">Used throughout</div>
+      </div>
+      <div class="glass rounded-2xl p-5 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="text-4xl mb-2">✨</div>
+        <div class="font-bold text-slate-800 text-sm">Premium Look</div>
+        <div class="text-xs text-slate-600 mt-1">Elegant designs</div>
+      </div>
+      <div class="glass rounded-2xl p-5 text-center hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="text-4xl mb-2">💪</div>
+        <div class="font-bold text-slate-800 text-sm">Long Lasting</div>
+        <div class="text-xs text-slate-600 mt-1">Built to last</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Products -->
 <section id="products" class="py-24 bg-gradient-to-b from-slate-50 to-white">
   <div class="max-w-7xl mx-auto px-6">
     <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">Our Products</h2>
-      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Premium plywood, modular kitchens, glass, wallpapers, mica, veneers & aluminum doors</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 gradient-text playfair">Plywood Collection</h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto">Premium grade plywood for every need — from waterproof marine grade to commercial use</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- Plywood -->
+      <!-- Marine Plywood -->
       <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
         <div class="viz viz-plywood relative">
           <img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Plywood" 
-               loading="lazy"
-               onerror="this.style.display='none'"
+               alt="Marine Plywood" loading="lazy" onerror="this.style.display='none'"
                class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-blue-600 text-white text-xs font-bold rounded-full">BWP GRADE</div>
+          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🌊</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Marine Plywood</h3>
+          <p class="text-slate-600 mb-4">100% waterproof BWP grade — perfect for kitchens, bathrooms & exterior use</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Waterproof</span>
+            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Boiling Water Proof</span>
+            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">ISI Marked</span>
+          </div>
+          <a href="https://wa.me/916000090678?text=I'm interested in Marine Plywood (BWP)" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+        </div>
+      </div>
+
+      <!-- BWR Plywood -->
+      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
+        <div class="viz viz-plywood relative" style="background: repeating-linear-gradient(90deg, #6B4423 0px, #8B5A2B 2px, #6B4423 4px, #4A2C0F 8px, #6B4423 12px), linear-gradient(135deg, #6B4423, #8B5A2B);">
+          <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?w=600&h=400&fit=crop&auto=format&q=80" 
+               alt="BWR Plywood" loading="lazy" onerror="this.style.display='none'"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full">BWR GRADE</div>
+          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">💧</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">BWR Plywood</h3>
+          <p class="text-slate-600 mb-4">Boiling water resistant plywood — ideal for furniture, doors & wet areas</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Water Resistant</span>
+            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Termite Proof</span>
+            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Borer Proof</span>
+          </div>
+          <a href="https://wa.me/916000090678?text=I'm interested in BWR Plywood" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+        </div>
+      </div>
+
+      <!-- Commercial MR Plywood -->
+      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
+        <div class="viz relative" style="background: repeating-linear-gradient(90deg, #C19A6B 0px, #D2B48C 2px, #C19A6B 4px, #A0826D 8px, #C19A6B 12px);">
+          <img src="https://images.unsplash.com/photo-1611288875785-f1cf64c00bf2?w=600&h=400&fit=crop&auto=format&q=80" 
+               alt="Commercial Plywood" loading="lazy" onerror="this.style.display='none'"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-amber-600 text-white text-xs font-bold rounded-full">MR GRADE</div>
           <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🪵</div>
         </div>
         <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Premium Plywood</h3>
-          <p class="text-slate-600 mb-4">High-quality plywood from top brands for all interior needs</p>
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Commercial Plywood</h3>
+          <p class="text-slate-600 mb-4">MR grade for indoor furniture, partitions & general purpose use</p>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Waterproof</span>
-            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">Termite Resistant</span>
-            <span class="text-xs px-3 py-1 bg-blue-100 text-blue-700 rounded-full">BWP Grade</span>
+            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Moisture Resistant</span>
+            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Affordable</span>
+            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Versatile</span>
           </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Premium Plywood" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+          <a href="https://wa.me/916000090678?text=I'm interested in Commercial MR Plywood" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
         </div>
       </div>
 
-      <!-- Kitchen -->
+      <!-- Block Board -->
       <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
-        <div class="viz viz-kitchen relative">
-          <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Modular Kitchen" 
-               loading="lazy"
-               onerror="this.style.display='none'"
+        <div class="viz relative" style="background: linear-gradient(135deg, #92400e 0%, #b45309 100%);">
+          <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&h=400&fit=crop&auto=format&q=80" 
+               alt="Block Board" loading="lazy" onerror="this.style.display='none'"
                class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🍳</div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-emerald-600 text-white text-xs font-bold rounded-full">SOLID CORE</div>
+          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🧱</div>
         </div>
         <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Modular Kitchens</h3>
-          <p class="text-slate-600 mb-4">Custom designed modular kitchens with premium accessories</p>
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Block Board</h3>
+          <p class="text-slate-600 mb-4">Strong solid wood core boards — ideal for shelves, wardrobes & doors</p>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Modern Design</span>
-            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Space Efficient</span>
-            <span class="text-xs px-3 py-1 bg-purple-100 text-purple-700 rounded-full">Premium</span>
+            <span class="text-xs px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">High Strength</span>
+            <span class="text-xs px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">Lightweight</span>
+            <span class="text-xs px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full">19mm/25mm</span>
           </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Modular Kitchens" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+          <a href="https://wa.me/916000090678?text=I'm interested in Block Board" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
         </div>
       </div>
 
-      <!-- Glass -->
+      <!-- Flush Doors -->
       <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
-        <div class="viz viz-glass relative">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Glass" 
-               loading="lazy"
-               onerror="this.style.display='none'"
-               class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">💎</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Glass Solutions</h3>
-          <p class="text-slate-600 mb-4">Imported designer glass for partitions, doors and decoration</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Toughened</span>
-            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Designer</span>
-            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Custom</span>
-          </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Glass Solutions" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
-        </div>
-      </div>
-
-      <!-- Wallpaper -->
-      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
-        <div class="viz viz-wallpaper relative">
-          <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Wallpaper" 
-               loading="lazy"
-               onerror="this.style.display='none'"
-               class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🎨</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Designer Wallpapers</h3>
-          <p class="text-slate-600 mb-4">Imported wallpapers with exclusive designs for any space</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Premium</span>
-            <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Easy Maintain</span>
-            <span class="text-xs px-3 py-1 bg-pink-100 text-pink-700 rounded-full">Diverse</span>
-          </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Wallpapers" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
-        </div>
-      </div>
-
-      <!-- Mica -->
-      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
-        <div class="viz viz-mica relative">
-          <img src="https://images.unsplash.com/photo-1582582450156-9fcbab4d9b94?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Mica Veneers" 
-               loading="lazy"
-               onerror="this.style.display='none'"
-               class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">✨</div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Mica & Veneers</h3>
-          <p class="text-slate-600 mb-4">Top-grade mica and veneers for elegant furniture finishing</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Scratch Free</span>
-            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Heat Resistant</span>
-            <span class="text-xs px-3 py-1 bg-amber-100 text-amber-700 rounded-full">Rich Texture</span>
-          </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Mica and Veneers" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
-        </div>
-      </div>
-
-      <!-- Aluminum -->
-      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
-        <div class="viz viz-aluminum relative">
+        <div class="viz relative" style="background: linear-gradient(135deg, #7c2d12 0%, #9a3412 100%);">
           <img src="https://images.unsplash.com/photo-1558959356-2d3df0e9b65a?w=600&h=400&fit=crop&auto=format&q=80" 
-               alt="Aluminum Doors" 
-               loading="lazy"
-               onerror="this.style.display='none'"
+               alt="Flush Doors" loading="lazy" onerror="this.style.display='none'"
                class="absolute inset-0 w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-rose-600 text-white text-xs font-bold rounded-full">FLUSH DOOR</div>
           <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">🚪</div>
         </div>
         <div class="p-6">
-          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Aluminum Doors</h3>
-          <p class="text-slate-600 mb-4">Modern aluminum doors and windows with superior durability</p>
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Flush Doors</h3>
+          <p class="text-slate-600 mb-4">Premium flush doors with smooth finish — perfect for homes & offices</p>
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Weatherproof</span>
-            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Low Maintain</span>
-            <span class="text-xs px-3 py-1 bg-teal-100 text-teal-700 rounded-full">Sleek</span>
+            <span class="text-xs px-3 py-1 bg-rose-100 text-rose-700 rounded-full">Solid Core</span>
+            <span class="text-xs px-3 py-1 bg-rose-100 text-rose-700 rounded-full">Soundproof</span>
+            <span class="text-xs px-3 py-1 bg-rose-100 text-rose-700 rounded-full">Standard Sizes</span>
           </div>
-          <a href="https://wa.me/916000090678?text=I'm interested in Aluminum Doors" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+          <a href="https://wa.me/916000090678?text=I'm interested in Flush Doors" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
+        </div>
+      </div>
+
+      <!-- Decorative Plywood -->
+      <div class="glass rounded-3xl overflow-hidden hover:shadow-2xl transition-all hover:-translate-y-2">
+        <div class="viz relative" style="background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);">
+          <img src="https://images.unsplash.com/photo-1582582450156-9fcbab4d9b94?w=600&h=400&fit=crop&auto=format&q=80" 
+               alt="Decorative Plywood" loading="lazy" onerror="this.style.display='none'"
+               class="absolute inset-0 w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div class="absolute top-3 left-3 px-3 py-1 bg-indigo-600 text-white text-xs font-bold rounded-full">DECORATIVE</div>
+          <div class="icon-circle absolute bottom-3 right-3 z-10" style="font-size:50px;">✨</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-2xl font-bold text-slate-800 mb-2 playfair">Decorative Plywood</h3>
+          <p class="text-slate-600 mb-4">Veneer-faced plywood with elegant wood patterns for premium furniture</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Teak Veneer</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Walnut</span>
+            <span class="text-xs px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full">Oak Finish</span>
+          </div>
+          <a href="https://wa.me/916000090678?text=I'm interested in Decorative Plywood" target="_blank" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-semibold hover:shadow-xl transition-all">Inquire Now</a>
         </div>
       </div>
     </div>
